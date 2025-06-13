@@ -1037,7 +1037,7 @@ function prepareExistingDirectory(git, repositoryPath, repositoryUrl, clean, ref
             remove = true;
         }
         // Fetch URL does not match
-        else if (!fsHelper.directoryExistsSync(path.join(repositoryPath, '.git'))) {
+        else if (fsHelper.directoryExistsSync(path.join(repositoryPath, '.git'))) {
             remove = clean;
         }
         else if (repositoryUrl !== (yield git.tryGetFetchUrl())) {
