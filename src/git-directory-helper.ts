@@ -24,7 +24,7 @@ export async function prepareExistingDirectory(
     remove = true
   }
   // Fetch URL does not match
-  else if (!fsHelper.directoryExistsSync(path.join(repositoryPath, '.git'))) {
+  else if (fsHelper.directoryExistsSync(path.join(repositoryPath, '.git'))) {
     remove = clean
   }
   else if (repositoryUrl !== (await git.tryGetFetchUrl())) {
